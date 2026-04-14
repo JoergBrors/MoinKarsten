@@ -21,9 +21,9 @@
     overlay.className = "si-overlay";
 
     overlay.innerHTML = [
-      '<div class="si-panel" role="dialog" aria-modal="true" aria-label="Space Invanders Easter Egg">',
+      '<div class="si-panel" role="dialog" aria-modal="true" aria-label="Matrix Admin Invaders Easter Egg">',
       '  <div class="si-head">',
-      '    <h3 class="si-title">Space Invanders: Matrix Bonus</h3>',
+      '    <h3 class="si-title">Matrix Admin Invaders</h3>',
       '    <button id="si-close" class="si-close" type="button">Schliessen</button>',
       '  </div>',
       '  <div id="si-game-stage" class="si-game-stage">',

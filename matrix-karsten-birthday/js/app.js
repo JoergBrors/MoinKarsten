@@ -90,8 +90,8 @@
   }
 
   function openSpaceInvanders() {
-    loadStylesheetOnce("css/space-invanders.css");
-    loadScriptOnce("js/space-invanders.js", function () {
+    loadStylesheetOnce("css/matrix-admin-invaders.css");
+    loadScriptOnce("js/matrix-admin-invaders.js", function () {
       if (window.SpaceInvanders && typeof window.SpaceInvanders.start === "function") {
         window.SpaceInvanders.start();
       }

@@ -1,3 +1,4 @@
+/* matrix-admin-invaders.css - copied from space-invanders.css and renamed */
 .si-overlay {
   position: fixed;
   inset: 0;
@@ -73,6 +74,48 @@
   min-height: 2.8rem;
 }
 
+.si-controls {
+  display: flex;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+}
+
+.si-btn {
+  border: 1px solid rgba(121, 255, 186, 0.46);
+  background: rgba(22, 70, 42, 0.82);
+  color: #e7fff1;
+  border-radius: 8px;
+  padding: 0.55rem 0.8rem;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.si-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.si-touch {
+  display: none;
+  margin-top: 0.7rem;
+  gap: 0.55rem;
+}
+
+.si-touch .si-btn {
+  flex: 1;
+}
+
+@media (max-width: 760px) {
+  .si-panel {
+    padding: 0.8rem;
+  }
+
+  .si-touch {
+    display: flex;
+  }
+}
+
+/* Credits and transitions */
 .si-game-stage {
   transition: opacity 0.65s ease, transform 0.65s ease;
 }
@@ -196,37 +239,6 @@
 .si-credits-restart.si-show {
   opacity: 1;
   transform: translateY(0);
-}
-
-.si-controls {
-  display: flex;
-  gap: 0.55rem;
-  flex-wrap: wrap;
-}
-
-.si-btn {
-  border: 1px solid rgba(121, 255, 186, 0.46);
-  background: rgba(22, 70, 42, 0.82);
-  color: #e7fff1;
-  border-radius: 8px;
-  padding: 0.55rem 0.8rem;
-  font-family: inherit;
-  cursor: pointer;
-}
-
-.si-btn:disabled {
-  opacity: 0.45;
-  cursor: not-allowed;
-}
-
-.si-touch {
-  display: none;
-  margin-top: 0.7rem;
-  gap: 0.55rem;
-}
-
-.si-touch .si-btn {
-  flex: 1;
 }
 
 @keyframes siCreditsRoll {
