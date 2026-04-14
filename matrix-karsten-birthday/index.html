@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Matrix Karsten Birthday</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <canvas id="matrix-canvas" aria-hidden="true"></canvas>
+
+  <header class="app-header">
+    <div class="header-left">
+      <span class="status-dot"></span>
+      <span class="status-text">MATRIX BIRTHDAY PROTOCOL</span>
+    </div>
+    <div class="header-right" id="scene-indicator">Sequenz 1/9</div>
+  </header>
+
+  <main class="story-shell" id="story-shell">
+    <section id="scene-1" class="scene active" data-scene="1" aria-labelledby="scene-1-title">
+      <div class="panel panel-center">
+        <h1 id="scene-1-title" class="scene-title">Wake up</h1>
+        <div class="terminal-window">
+          <pre id="wake-typing" class="terminal-text"></pre>
+        </div>
+        <button class="btn btn-primary" id="wake-next" type="button">System fortsetzen</button>
+      </div>
+    </section>
+
+    <section id="scene-2" class="scene" data-scene="2" aria-labelledby="scene-2-title">
+      <div class="panel panel-center">
+        <h2 id="scene-2-title" class="scene-title">Follow the white rabbit</h2>
+        <p class="scene-copy">Ein seltenes Signal wurde entdeckt. Folge dem weißen Hasen, Karsten.</p>
+        <button id="rabbit-btn" class="rabbit-button" type="button" aria-label="White Rabbit trigger">
+          <span class="rabbit-icon">🐇</span>
+          <span class="rabbit-label">Klick mich. Vertrau dem Hasen.</span>
+        </button>
+        <p id="rabbit-hint" class="hint-text">Nur ein echter Admin klickt absichtlich auf mysteriöse Objekte.</p>
+      </div>
+    </section>
+
+    <section id="scene-3" class="scene" data-scene="3" aria-labelledby="scene-3-title">
+      <div class="panel">
+        <h2 id="scene-3-title" class="scene-title">Pillen-Entscheidung</h2>
+        <p class="scene-copy">Die blaue Pille startet den Büro-Alltag neu. Die rote Pille lädt die wahre Geburtstags-Story.</p>
+        <div class="pill-grid">
+          <button class="pill pill-blue" id="blue-pill" type="button">Blaue Pille</button>
+          <button class="pill pill-red" id="red-pill" type="button">Rote Pille</button>
+        </div>
+        <p id="pill-message" class="hint-text"></p>
+      </div>
+    </section>
+
+    <section id="scene-4" class="scene" data-scene="4" aria-labelledby="scene-4-title">
+      <div class="panel">
+        <h2 id="scene-4-title" class="scene-title">PowerShell-Erwachen</h2>
+        <div class="terminal-window large">
+          <pre id="powershell-output" class="terminal-text"></pre>
+        </div>
+        <button class="btn btn-primary" id="powershell-next" type="button" disabled>Profil vollständig geladen</button>
+      </div>
+    </section>
+
+    <section id="scene-5" class="scene" data-scene="5" aria-labelledby="scene-5-title">
+      <div class="panel">
+        <h2 id="scene-5-title" class="scene-title">Memory Fragments</h2>
+        <p class="scene-copy">Drei Fragmente aus einer richtig guten Zeit.</p>
+        <div class="memory-grid">
+          <article class="memory-card">
+            <div class="image-wrap">
+              <img src="img/erinnerung1.jpg" alt="Erinnerung 1" data-fallback="2013: Kennengelernt. Sofort gute Gespräche, kein Ticket-System nötig.">
+            </div>
+            <div class="memory-copy">2013 kennengelernt. 2013 bis 2017: enge Kollegen, echte Freundschaft.</div>
+          </article>
+          <article class="memory-card">
+            <div class="image-wrap">
+              <img src="img/erinnerung2.jpg" alt="Erinnerung 2" data-fallback="Good Enterprise, Citrix, Exchange und Fileserver: Karsten war der ruhige Fix in jedem Incident.">
+            </div>
+            <div class="memory-copy">Good Enterprise, Citrix, Exchange, Fileserver: Mit dir lief Technik plötzlich menschlich.</div>
+          </article>
+          <article class="memory-card">
+            <div class="image-wrap">
+              <img src="img/erinnerung3.jpg" alt="Erinnerung 3" data-fallback="Familie und Hunde zuerst. Genau deshalb bist du als Freund so stark.">
+            </div>
+            <div class="memory-copy">Du liebst deine Familie und deine Hunde. Und als Freund bist du einfach super.</div>
+          </article>
+        </div>
+        <button class="btn btn-primary" id="memory-next" type="button">Fragmente synchronisieren</button>
+      </div>
+    </section>
+
+    <section id="scene-6" class="scene" data-scene="6" aria-labelledby="scene-6-title">
+      <div class="panel">
+        <h2 id="scene-6-title" class="scene-title">Intune-Hacker-Terminal</h2>
+        <p class="scene-copy">Nur Show, null echte Hacks. Sammle 5 Admin-Keys, um das Deployment freizuschalten.</p>
+        <div class="terminal-window">
+          <pre id="intune-output" class="terminal-text"></pre>
+        </div>
+        <div id="mini-game" class="mini-game" aria-live="polite">
+          <div class="game-head">
+            <span>Admin-Keys:</span>
+            <strong id="key-count">0/5</strong>
+            <span id="steelcase-tease">Bonuschance: 3 Blu-ray-Steelcases*</span>
+          </div>
+          <div id="key-field" class="key-field"></div>
+        </div>
+        <button class="btn btn-primary" id="game-next" type="button" disabled>Policy anwenden</button>
+      </div>
+    </section>
+
+    <section id="scene-7" class="scene" data-scene="7" aria-labelledby="scene-7-title">
+      <div class="panel">
+        <h2 id="scene-7-title" class="scene-title">Apps werden ersetzt</h2>
+        <p class="scene-copy">Ein Matrix-Bug verteilt eine sehr kreative Richtlinie.</p>
+        <ul id="replacement-list" class="replace-list"></ul>
+        <button class="btn btn-primary" id="replace-next" type="button" disabled>Akzeptieren (mit einem Lachen)</button>
+      </div>
+    </section>
+
+    <section id="scene-8" class="scene" data-scene="8" aria-labelledby="scene-8-title">
+      <div class="panel panel-center">
+        <h2 id="scene-8-title" class="scene-title">Admin -> Super Admin</h2>
+        <p class="scene-copy">Elevation-Prozess erkannt. Berechtigung wird mit Stil erweitert.</p>
+        <div class="upgrade-track">
+          <div id="upgrade-fill" class="upgrade-fill"></div>
+        </div>
+        <button class="btn btn-primary" id="upgrade-btn" type="button">Upgrade starten</button>
+        <p id="upgrade-status" class="hint-text">Status: Admin</p>
+      </div>
+    </section>
+
+    <section id="scene-9" class="scene" data-scene="9" aria-labelledby="scene-9-title">
+      <div class="panel finale">
+        <h2 id="scene-9-title" class="scene-title">Geburtstagsfinale</h2>
+        <p class="finale-line">Happy 52, Karsten.</p>
+        <p class="finale-copy">Danke für deine ruhige Art, deinen Humor und die Gespräche, die immer besser waren als jedes Daily.</p>
+        <p class="finale-copy">Von 2013 bis 2017 warst du nicht nur Kollege, sondern echter Freund. Das bleibt.</p>
+        <p class="finale-copy">Familienmensch. Hundefreund. Super Admin mit Herz.</p>
+        <p class="finale-copy glitch" id="prize-punchline">Gewinnprüfung: Kein materieller Gewinn. Nur die Feindschaft. Matrix-Bug bestätigt.</p>
+        <button class="btn btn-ghost" id="restart-btn" type="button">Story neu starten</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
