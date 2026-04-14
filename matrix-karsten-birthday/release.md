@@ -61,3 +61,10 @@ Special dedication: Karsten — 52
 End of Release Notes
 --------------------
 Enjoy — and don’t forget to message Karsten.
+
+Deployment note (2026-04-14)
+---------------------------
+- Updated GitHub Actions workflow to point `app_location` to `matrix-karsten-birthday` so Azure Static Web Apps deploys the correct folder.
+- `output_location` left empty since this project is pure static assets and does not need a build step.
+
+If your CI still fails, ensure the workflow file `.github/workflows/azure-static-web-apps-gray-water-020310603.yml` uses the correct secret and that `matrix-karsten-birthday/index.html` exists at repo root path `matrix-karsten-birthday/index.html`.
