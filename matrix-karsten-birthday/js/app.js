@@ -47,8 +47,99 @@
     "Edge -> Uhr"
   ];
 
+  var eggSequence = "karsten";
+  var eggBuffer = "";
+  var eggLoaded = false;
+  var eggTapCount = 0;
+  var eggTapTimer = null;
+
   function byId(id) {
     return document.getElementById(id);
+  }
+
+  function loadStylesheetOnce(href) {
+    if (document.querySelector('link[data-egg-style="' + href + '"]')) {
+      return;
+    }
+
+    var link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = href;
+    link.setAttribute("data-egg-style", href);
+    document.head.appendChild(link);
+  }
+
+  function loadScriptOnce(src, callback) {
+    if (document.querySelector('script[data-egg-script="' + src + '"]')) {
+      if (callback) {
+        callback();
+      }
+      return;
+    }
+
+    var script = document.createElement("script");
+    script.src = src;
+    script.defer = true;
+    script.setAttribute("data-egg-script", src);
+    script.onload = function () {
+      if (callback) {
+        callback();
+      }
+    };
+    document.body.appendChild(script);
+  }
+
+  function openSpaceInvanders() {
+    loadStylesheetOnce("css/space-invanders.css");
+    loadScriptOnce("js/space-invanders.js", function () {
+      if (window.SpaceInvanders && typeof window.SpaceInvanders.start === "function") {
+        window.SpaceInvanders.start();
+      }
+    });
+  }
+
+  function unlockEasterEgg() {
+    if (eggLoaded) {
+      openSpaceInvanders();
+      return;
+    }
+
+    eggLoaded = true;
+    openSpaceInvanders();
+  }
+
+  function setupEasterEggTrigger() {
+    document.addEventListener("keydown", function (event) {
+      var key = event.key || "";
+      if (!/^[a-z]$/i.test(key)) {
+        return;
+      }
+
+      eggBuffer = (eggBuffer + key.toLowerCase()).slice(-eggSequence.length);
+      if (eggBuffer === eggSequence) {
+        unlockEasterEgg();
+        eggBuffer = "";
+      }
+    });
+
+    var statusDot = document.querySelector(".status-dot");
+    if (!statusDot) {
+      return;
+    }
+
+    statusDot.addEventListener("click", function () {
+      eggTapCount += 1;
+      clearTimeout(eggTapTimer);
+
+      eggTapTimer = setTimeout(function () {
+        eggTapCount = 0;
+      }, 1400);
+
+      if (eggTapCount >= 5) {
+        eggTapCount = 0;
+        unlockEasterEgg();
+      }
+    });
   }
 
   function updateIndicator() {
@@ -328,6 +419,7 @@
     updateIndicator();
     attachImageFallbacks();
     setupInteractions();
+    setupEasterEggTrigger();
     startMatrixRain();
     runWakeScene();
   }
